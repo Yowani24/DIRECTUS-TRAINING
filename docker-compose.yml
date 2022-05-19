@@ -1,0 +1,17 @@
+version: "3"
+
+volumes:
+  boafe_nats_data:
+
+services:
+
+  postgres:
+    image: postgis/postgis:13-3.1-alpine
+    command: postgres
+    restart: always
+    env_file:
+      - .postgres.env
+    ports:
+      - "5438:5432"
+    volumes:
+      - .docker/data/postgres:/var/lib/postgresql/data
